@@ -13,10 +13,10 @@ export async function get() {
 }
 
 export const post: RequestHandler = async (event: RequestEvent) => {
-    const { id, wood, core, length } = await event.request.json();
-    await prisma.wand.create({ data: { id, wood, core, length } });
+    const { id, wood, core, length, maker, flexibility } = await event.request.json();
+    const newWand = await prisma.wand.create({ data: { id, wood, core, length, maker, flexibility } });
     return {
         status: 200,
-        body: { message: "Created successfully" }
+        body: { message: "Created successfully", data: newWand }
     }
 }

@@ -108,7 +108,6 @@ export const lengths = [
     19, 19.25, 19.5, 19.75,
 ]
 
-
 export const flexibilities = [
     "Very flexible",
     "Quite flexible",
@@ -129,4 +128,12 @@ export const flexibilities = [
     "Unbending",
     "Unyielding",
     "Brittle",
+]
+
+export const propertiesConfigArr = [
+    { name: 'core', dataArray: cores },
+    { name: 'wood', dataArray: woods },
+    { name: 'flexibility', dataArray: flexibilities },
+    { name: 'length', dataArray: lengths },
+    { name: 'maker', dataArray: makers }
 ]

@@ -1,4 +1,4 @@
 <script>
-    import WandForm from "../components/WandForm.svelte";
+    import WandGenerator from "../components/WandGenerator.svelte";
 </script>
-<WandForm/>
+<WandGenerator/>
