@@ -6,19 +6,13 @@
 </script>
 
 <div in:fade>
-	<p class="text-gray-300 text-center text-lg">
-		Congratulations on your new wand. Share it with your friends!
+	<p class="text-gray-300 text-center text-4xl mb-4">
+		Congratulations on your new wand!
 	</p>
-	<a class="text-white text-lg my-2 text-center underline" href={`${window.location}wands/${id}`}
-		>{window.location}wands/{id}</a
-	>
-	<a
-		href="https://twitter.com/share?ref_src=twsrc%5Etfw"
-		class="twitter-share-button"
-		data-show-count="false">Tweet</a
-	>
-	<TwitterShare
+    <div class="text-center">
+        <TwitterShare
 		text="I created my own magical wand with @planetscale @prisma @sveltekit @tailwindcss"
 		url={`${variables.basePath}/wands/${id}`}
-	/>
+        />
+    </div>
 </div>

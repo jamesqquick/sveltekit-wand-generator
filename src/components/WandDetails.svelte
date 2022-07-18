@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { propertiesConfigArr } from '../globals';
 	import { fly } from 'svelte/transition';
+    import type { Wand } from '@prisma/client';
 
-	export let wand;
+	export let wand: Wand;
 </script>
 
 <div class="flex flex-col gap-4 my-10 bg-gray-700 p-8 border-4 rounded-md border-yellow-500 ">

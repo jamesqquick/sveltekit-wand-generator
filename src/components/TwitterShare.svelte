@@ -17,12 +17,11 @@
 
 	function open(e) {
 		e.preventDefault();
-
 		window.open(href, '_blank');
 	}
 </script>
 
-<a target="_blank" rel="noreferrer" {href} on:click={open}> Tweet this </a>
+<a target="_blank" rel="noreferrer" {href} on:click={open}>Share on Twitter</a>
 
 <style>
 	a {
@@ -33,9 +32,5 @@
 		font-weight: bold;
 		padding: 0.5em 0.3em 0.5em 1.5em;
 		text-decoration: none;
-	}
-
-	a:hover {
-		border-bottom: 2px solid rgb(29, 161, 242);
 	}
 </style>

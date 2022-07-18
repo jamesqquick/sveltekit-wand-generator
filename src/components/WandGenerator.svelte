@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { propertiesConfigArr } from '../globals';
 	import { fade } from 'svelte/transition';
-	import { v4 as uuidv4 } from 'uuid';
 	import WandDetails from '../components/WandDetails.svelte';
 	import Congratulations from './Congratulations.svelte';
 
@@ -13,7 +12,6 @@
 		SAVED
 	}
 
-	let id = uuidv4();
 
 	const blankWand = {
 		core: ' ',
@@ -21,13 +19,13 @@
 		length: ' ',
 		maker: ' ',
 		flexibility: ' ',
-		id
 	};
 
 	let myWand = { ...blankWand };
 
 	let currentState: WAND_STATE = WAND_STATE.NOT_STARTED;
 	let textSuffix = '';
+    let wandId = "";
 
 	const handleSave = async () => {
 		currentState = WAND_STATE.SAVING;
@@ -36,7 +34,9 @@
 				method: 'POST',
 				body: JSON.stringify(myWand)
 			});
-			const data = await res.json();
+			const {data} = await res.json();
+            console.log(data);
+            wandId = data.id;
 			currentState = WAND_STATE.SAVED;
 		} catch (err) {
 			console.error(err);
@@ -79,7 +79,7 @@
 		myWand = { ...blankWand };
 	};
 
-	const delay = (delayInms) => {
+	const delay = (delayInms: number) => {
 		return new Promise((resolve) => {
 			setTimeout(() => {
 				resolve(2);
@@ -90,8 +90,8 @@
 
 <WandDetails wand={myWand} />
 
-<div class="mt-10 flex justify-center">
-	{#if currentState === WAND_STATE.NOT_STARTED}
+<div class="mt-10 flex justify-center gap-4">
+	{#if currentState === WAND_STATE.NOT_STARTED || currentState === WAND_STATE.GENERATED}
 		<button
 			in:fade
 			type="button"
@@ -107,7 +107,10 @@
 			<span> Magic is happening </span>
 			<span class="w-10">{textSuffix}</span>
 		</div>
-	{:else if currentState === WAND_STATE.GENERATED}
+    {:else if currentState === WAND_STATE.SAVED}
+            <Congratulations id={wandId} />
+    {/if}
+	{#if currentState === WAND_STATE.GENERATED}
 		<button
 			in:fade
 			type="button"
@@ -118,7 +121,6 @@
 		>
 			Save Wand
 		</button>
-	{:else if currentState === WAND_STATE.SAVED}
-		<Congratulations {id} />
-	{/if}
+    {/if}
+
 </div>
