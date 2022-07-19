@@ -1,62 +1,65 @@
 <script context="module" lang="ts" >
-	export async function load({ params: { id }, fetch }) {
-    const response = await fetch(`/api/wands/${id}`);
-    const { data: wand } = await response.json();
-    return { props: { wand } };
-}
-</script>
-
-<script lang="ts">
     import { Cloudinary } from "@cloudinary/url-gen";
-    import type { Wand } from '@prisma/client';
-    import { variables } from '$src/variables';
-    import WandDetails from '../../components/WandDetails.svelte';
     import { text } from "@cloudinary/url-gen/qualifiers/source";
     import { source } from "@cloudinary/url-gen/actions/overlay";
     import { TextStyle } from "@cloudinary/url-gen/qualifiers/textStyle";
     import { Position } from "@cloudinary/url-gen/qualifiers";
     import { compass } from "@cloudinary/url-gen/qualifiers/gravity";
+    
+	export async function load({ params: { id }, fetch }) {
+    const response = await fetch(`/api/wands/${id}`);
+    const { data: wand } = await response.json();
 
-export let wand: Wand;
-
-const cloudinary = new Cloudinary({
-    cloud: {
-        cloudName: variables.cloudinaryCloudName,
-    }
-});
-let imageUrl = cloudinary.image('sk-wand-generator/base.png')
-    .overlay(source(
-        text(wand.core, new TextStyle('Poppins', 26))
-            .textColor('black')
-    )
-        .position(new Position().gravity(compass('west')).offsetY(-40).offsetX(370))
-    )
-    .overlay(source(
-        text(wand.wood, new TextStyle('Poppins', 26))
-            .textColor('black')
-    )
-        .position(new Position().gravity(compass('west')).offsetY(16).offsetX(370))
-    )
-    .overlay(source(
-        text(wand.flexibility, new TextStyle('Poppins', 26))
-            .textColor('black')
-    )
-        .position(new Position().gravity(compass('west')).offsetY(74).offsetX(370))
-    )
-    .overlay(source(
-        text(wand.length.toString(), new TextStyle('Poppins', 32))
-            .textColor('black')
-    )
-        .position(new Position().gravity(compass('west')).offsetY(130).offsetX(370))
-    )
-    .overlay(source(
-        text(wand.maker, new TextStyle('Poppins', 26))
-            .textColor('black')
-    )
-        .position(new Position().gravity(compass('west')).offsetY(186).offsetX(370))
-    )
+    const cloudinary = new Cloudinary({
+        cloud: {
+            cloudName: variables.cloudinaryCloudName,
+        }
+    });
+    let imageUrl = cloudinary.image('sk-wand-generator/base.png')
+        .overlay(source(
+            text(wand.core, new TextStyle('Poppins', 26))
+                .textColor('black')
+        )
+            .position(new Position().gravity(compass('west')).offsetY(-40).offsetX(370))
+        )
+        .overlay(source(
+            text(wand.wood, new TextStyle('Poppins', 26))
+                .textColor('black')
+        )
+            .position(new Position().gravity(compass('west')).offsetY(16).offsetX(370))
+        )
+        .overlay(source(
+            text(wand.flexibility, new TextStyle('Poppins', 26))
+                .textColor('black')
+        )
+            .position(new Position().gravity(compass('west')).offsetY(74).offsetX(370))
+        )
+        .overlay(source(
+            text(wand.length.toString(), new TextStyle('Poppins', 32))
+                .textColor('black')
+        )
+            .position(new Position().gravity(compass('west')).offsetY(130).offsetX(370))
+        )
+        .overlay(source(
+            text(wand.maker, new TextStyle('Poppins', 26))
+                .textColor('black')
+        )
+            .position(new Position().gravity(compass('west')).offsetY(186).offsetX(370))
+        )
     .toURL();
-console.log(imageUrl)
+    return { props: { wand, imageUrl } };
+}
+</script>
+
+<script lang="ts">
+    import type { Wand } from '@prisma/client';
+    import { variables } from '$src/variables';
+    import WandDetails from '../../components/WandDetails.svelte';
+
+    export let wand: Wand;
+    export let imageUrl: string;
+    
+    console.log(imageUrl)
 
 </script>
     <svelte:head>

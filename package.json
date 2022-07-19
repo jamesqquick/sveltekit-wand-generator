@@ -39,6 +39,7 @@
 		"@cloudinary/url-gen": "^1.8.0",
 		"@fontsource/fira-mono": "^4.5.0",
 		"@prisma/client": "^4.0.0",
+		"cloudinary": "^1.30.0",
 		"cookie": "^0.4.1",
 		"dotenv": "^16.0.1",
 		"prisma": "^4.0.0"
