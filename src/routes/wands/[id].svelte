@@ -9,7 +9,7 @@
 <script lang="ts">
     import { Cloudinary } from "@cloudinary/url-gen";
     import type { Wand } from '@prisma/client';
-    import { variables } from '../../variables';
+    import { variables } from '$src/variables';
     import WandDetails from '../../components/WandDetails.svelte';
     import { text } from "@cloudinary/url-gen/qualifiers/source";
     import { source } from "@cloudinary/url-gen/actions/overlay";

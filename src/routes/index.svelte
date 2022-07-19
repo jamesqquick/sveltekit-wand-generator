@@ -1,5 +1,5 @@
 <script>
-import { variables } from "../variables";
+import { variables } from "$src/variables";
 import WandGenerator from "../components/WandGenerator.svelte";
 </script>
 <svelte:head>
