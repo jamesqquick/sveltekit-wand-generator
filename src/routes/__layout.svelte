@@ -1,8 +1,18 @@
 <script>
+import { variables } from "src/variables";
+
     import "../app.css";
 </script>
 <svelte:head>
     <meta property="og:title" content="SvelteKit Wand Generator" />
+    <meta property="og:site_name" content="SvelteKit Wand Generator" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:description" content="A SvelteKit app for generating random wands." />
+    <meta name="twitter:creator" content="@jamesqquick" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@jamesqquick" />
+    <meta name="twitter:description" content="A SvelteKit app for generating random wands." />
 </svelte:head>
 <div class="bg-gray-900 h-screen w-screen px-4 py-10 flex justify-center">
     <div class="md:min-w-[600px]">

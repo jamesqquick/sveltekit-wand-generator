@@ -60,9 +60,10 @@ console.log(imageUrl)
 
 </script>
     <svelte:head>
-        <meta property="og:title" content = "My SvelteKit Wand" />
-        <meta property="og:url" content = {`${variables.basePath}/wands/${wand.id}`} />
-        <meta property = "og:image" content = { imageUrl } />
+        <meta property="og:title" content="My SvelteKit Wand" />
+        <meta property="og:url" content={`${variables.basePath}/wands/${wand.id}`} />
+        <meta property = "og:image" content={ imageUrl } />
+        <meta name="twitter:image" content={imageUrl} />
     </svelte:head>
     <WandDetails { wand } />
     <h2 class="text-white text-4xl text-center underline" >
