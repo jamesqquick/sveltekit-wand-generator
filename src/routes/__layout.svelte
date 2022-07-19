@@ -1,6 +1,4 @@
 <script>
-import { variables } from "src/variables";
-
     import "../app.css";
 </script>
 <svelte:head>

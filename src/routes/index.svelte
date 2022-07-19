@@ -1,7 +1,6 @@
 <script>
-import { variables } from "src/variables";
-
-    import WandGenerator from "../components/WandGenerator.svelte";
+import { variables } from "../variables";
+import WandGenerator from "../components/WandGenerator.svelte";
 </script>
 <svelte:head>
     <meta name="twitter:title" content="SvelteKit Wand Generator" />
