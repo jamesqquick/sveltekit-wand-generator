@@ -59,8 +59,6 @@
     export let wand: Wand;
     export let imageUrl: string;
     
-    console.log(imageUrl)
-
 </script>
     <svelte:head>
         <meta property="og:title" content="My SvelteKit Wand" />

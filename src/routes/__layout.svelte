@@ -1,5 +1,6 @@
 <script>
-    import "../app.css";
+    import Footer from "$src/components/Footer.svelte";
+import "../app.css";
 </script>
 <svelte:head>
     <meta property="og:title" content="SvelteKit Wand Generator" />
@@ -30,3 +31,4 @@
         <slot />
     </div>
 </div>
+<Footer/>
