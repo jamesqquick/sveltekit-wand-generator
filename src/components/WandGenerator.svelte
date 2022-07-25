@@ -3,6 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import WandDetails from '../components/WandDetails.svelte';
 	import Congratulations from './Congratulations.svelte';
+	import type { Wand } from '@prisma/client';
 
 	enum WAND_STATE {
 		NOT_STARTED,
@@ -12,20 +13,19 @@
 		SAVED
 	}
 
-
-	const blankWand = {
+	const blankWand: Wand = {
 		core: ' ',
 		wood: ' ',
 		length: ' ',
 		maker: ' ',
-		flexibility: ' ',
+		flexibility: ' '
 	};
 
-	let myWand = { ...blankWand };
+	let myWand: Wand = { ...blankWand };
 
 	let currentState: WAND_STATE = WAND_STATE.NOT_STARTED;
 	let textSuffix = '';
-    let wandId = "";
+	let wandId = '';
 
 	const handleSave = async () => {
 		currentState = WAND_STATE.SAVING;
@@ -34,9 +34,8 @@
 				method: 'POST',
 				body: JSON.stringify(myWand)
 			});
-			const {data} = await res.json();
-            console.log(data);
-            wandId = data.id;
+			const { data } = await res.json();
+			wandId = data.id;
 			currentState = WAND_STATE.SAVED;
 		} catch (err) {
 			console.error(err);
@@ -107,9 +106,9 @@
 			<span> Magic is happening </span>
 			<span class="w-10">{textSuffix}</span>
 		</div>
-    {:else if currentState === WAND_STATE.SAVED}
-            <Congratulations id={wandId} />
-    {/if}
+	{:else if currentState === WAND_STATE.SAVED}
+		<Congratulations id={wandId} />
+	{/if}
 	{#if currentState === WAND_STATE.GENERATED}
 		<button
 			in:fade
@@ -121,6 +120,5 @@
 		>
 			Save Wand
 		</button>
-    {/if}
-
+	{/if}
 </div>

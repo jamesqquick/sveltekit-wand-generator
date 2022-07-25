@@ -14,14 +14,9 @@
 		.join('&');
 
 	$: href = `https://twitter.com/intent/tweet?${query}`;
-
-	function open(e) {
-		e.preventDefault();
-		window.open(href, '_blank');
-	}
 </script>
 
-<a target="_blank" rel="noreferrer" {href} on:click={open}>Share on Twitter</a>
+<a target="_blank" rel="noreferrer" {href}>Share on Twitter</a>
 
 <style>
 	a {

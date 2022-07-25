@@ -1,15 +1,3 @@
-// export enum CoreEnum {
-//     PhoenixFeather = "Phoenix Feather",
-//     snallygasterHeartstring = "Snallygaster Heartstring",
-//     test = "test"
-// }
-
-// export enum WoodEnum {
-//     Cypress = "Cypress",
-//     Spruce = "Spruce",
-//     Holly = "Holly"
-// }
-
 export const woods: string[] = ['Acacia',
     'Alder',
     'Apple',
