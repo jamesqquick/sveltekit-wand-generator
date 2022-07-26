@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient, type Wand } from '@prisma/client';
 import type { RequestEvent, RequestHandler } from '@sveltejs/kit';
 
 const prisma = new PrismaClient();
@@ -15,7 +15,7 @@ export async function GET() {
 
 export const POST: RequestHandler = async (event: RequestEvent) => {
     const { id, wood, core, length, maker, flexibility } = await event.request.json();
-    const newWand = await prisma.wand.create({
+    const newWand: Wand = await prisma.wand.create({
         data: { id, wood, core, length, maker, flexibility }
     });
     return {
